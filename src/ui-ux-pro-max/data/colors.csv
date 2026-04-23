@@ -79,7 +79,7 @@ No,Product Type,Primary,On Primary,Secondary,On Secondary,Accent,On Accent,Backg
 78,Language Learning App,#4F46E5,#FFFFFF,#818CF8,#0F172A,#16A34A,#FFFFFF,#EEF2FF,#312E81,#FFFFFF,#312E81,#EBEEF8,#64748B,#C7D2FE,#DC2626,#FFFFFF,#4F46E5,Learning indigo + progress green [Accent adjusted from #22C55E for WCAG 3:1]
 79,Coding Bootcamp,#0F172A,#FFFFFF,#1E293B,#FFFFFF,#22C55E,#0F172A,#020617,#F8FAFC,#0E1223,#F8FAFC,#1A1E2F,#94A3B8,#334155,#EF4444,#FFFFFF,#0F172A,Terminal dark + success green
 80,Cybersecurity Platform,#00FF41,#0F172A,#0D0D0D,#FFFFFF,#FF3333,#FFFFFF,#000000,#E0E0E0,#0C130E,#E0E0E0,#181818,#94A3B8,#1F1F1F,#EF4444,#FFFFFF,#00FF41,Matrix green + alert red
-81,Developer Tool / IDE,#1E293B,#FFFFFF,#334155,#FFFFFF,#22C55E,#0F172A,#0F172A,#F8FAFC,#1B2336,#F8FAFC,#272F42,#94A3B8,#475569,#EF4444,#FFFFFF,#1E293B,Code dark + run green
+81,Developer Tool / IDE,#0A0A0A,#FFFFFF,#171717,#FFFFFF,#F8FAFC,#0A0A0A,#000000,#FAFAFA,#0F0F0F,#FAFAFA,#10141B,#A1A1AA,"rgba(255,255,255,0.10)",#EF4444,#FFFFFF,#3B82F6,"Vercel-inspired monochrome base + white CTA + spectral blue/green/orange/red reserved for hero visuals, charts, and status moments"
 82,Biotech / Life Sciences,#0EA5E9,#0F172A,#0284C7,#FFFFFF,#059669,#FFFFFF,#F0F9FF,#0C4A6E,#FFFFFF,#0C4A6E,#E8F2F8,#64748B,#BAE6FD,#DC2626,#FFFFFF,#0EA5E9,DNA blue + life green [Accent adjusted from #10B981 for WCAG 3:1]
 83,Space Tech / Aerospace,#F8FAFC,#0F172A,#94A3B8,#0F172A,#3B82F6,#FFFFFF,#0B0B10,#F8FAFC,#1E1E23,#F8FAFC,#232328,#94A3B8,#1E293B,#EF4444,#FFFFFF,#F8FAFC,Star white + launch blue
 84,Architecture / Interior,#171717,#FFFFFF,#404040,#FFFFFF,#A16207,#FFFFFF,#FFFFFF,#171717,#FFFFFF,#171717,#E8ECF0,#64748B,#E5E5E5,#DC2626,#FFFFFF,#171717,Minimal black + accent gold [Accent adjusted from #D4AF37 for WCAG 3:1]

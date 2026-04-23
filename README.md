@@ -403,6 +403,9 @@ For direct access to the design system generator:
 # Generate design system with ASCII output
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --design-system -p "Serenity Spa"
 
+# Vercel-inspired developer cloud aesthetic
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "vercel-inspired developer cloud ai platform monochrome grid" --design-system -p "Launch Platform"
+
 # Generate with Markdown output
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech banking" --design-system -f markdown
 
