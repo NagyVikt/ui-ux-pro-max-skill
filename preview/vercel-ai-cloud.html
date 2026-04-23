@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI UX Pro Max | Vercel-Inspired Landing Preview</title>
+  <style>
+    :root {
+      --bg: #020202;
+      --surface: #090909;
+      --surface-2: #0f0f0f;
+      --surface-3: #141414;
+      --fg: #f5f5f5;
+      --muted: #a3a3a3;
+      --muted-2: #7a7a7a;
+      --border: rgba(255, 255, 255, 0.11);
+      --border-strong: rgba(255, 255, 255, 0.16);
+      --primary: #f5f5f5;
+      --primary-fg: #050505;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+      --radius-pill: 999px;
+      --radius-card: 28px;
+      --radius-panel: 22px;
+      --blue: #3b82f6;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(59, 130, 246, 0.11), transparent 26%),
+        radial-gradient(circle at 72% 74%, rgba(245, 158, 11, 0.09), transparent 20%),
+        radial-gradient(circle at 26% 74%, rgba(34, 197, 94, 0.05), transparent 20%),
+        var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a.button {
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100vw - 56px));
+      margin: 22px auto 0;
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 64px;
+      padding: 10px 18px 10px 22px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(9, 9, 9, 0.86);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: fit-content;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 26px;
+      height: 26px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      border-radius: 2px;
+    }
+
+    .brand-mark::before {
+      background: #fafafa;
+    }
+
+    .brand-mark::after {
+      inset: 5px 5px 7px;
+      background: #020202;
+    }
+
+    .nav-links,
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 180ms ease, background-color 180ms ease;
+    }
+
+    .nav-link.active {
+      background: #151515;
+      color: var(--fg);
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      color: var(--fg);
+      background: #111111;
+      outline: none;
+    }
+
+    .chevron {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #0c0c0c;
+      color: var(--fg);
+      font-size: 15px;
+      font-weight: 500;
+      transition:
+        transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+      outline: none;
+    }
+
+    .button.primary {
+      background: var(--primary);
+      color: var(--primary-fg);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .button.subtle {
+      background: #090909;
+    }
+
+    .announcement {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin: 26px auto 0;
+      color: #d9d9d9;
+      font-size: 14px;
+    }
+
+    .announcement-copy {
+      color: #d2d2d2;
+    }
+
+    .announcement .button {
+      height: 40px;
+      padding: 0 20px;
+      background: #f0f0f0;
+      color: #060606;
+      border-color: rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+    }
+
+    .hero {
+      width: min(760px, calc(100vw - 56px));
+      margin: 84px auto 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3.7rem, 7.8vw, 5.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      font-weight: 650;
+      text-wrap: balance;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .hero-actions .button {
+      height: 56px;
+      padding: 0 28px;
+      font-size: 16px;
+      border-radius: var(--radius-pill);
+    }
+
+    .grid-frame {
+      width: min(1010px, calc(100vw - 112px));
+      margin: 74px auto 130px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.03)) 0 0 / 100% 1px no-repeat,
+        #030303;
+      box-shadow: var(--shadow);
+    }
+
+    .top-row,
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .top-row .cell,
+    .bottom-row .cell {
+      min-height: 188px;
+      padding: 38px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .top-row .cell:last-child,
+    .bottom-row .cell:last-child {
+      border-right: none;
+    }
+
+    .eyebrow {
+      color: var(--muted-2);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
+    }
+
+    .top-row h2,
+    .middle-row h2 {
+      margin: 0;
+      letter-spacing: -0.05em;
+    }
+
+    .top-row h2 {
+      font-size: 28px;
+      line-height: 1.16;
+      max-width: 320px;
+    }
+
+    .top-row p,
+    .bottom-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .middle-row {
+      padding: 92px 44px 58px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .middle-row h2 {
+      font-size: clamp(2.7rem, 5vw, 4rem);
+      line-height: 1.02;
+      max-width: 800px;
+      margin: 0 auto;
+      text-wrap: balance;
+    }
+
+    .middle-row .lede {
+      max-width: 720px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.68;
+      text-wrap: pretty;
+    }
+
+    .system-map {
+      position: relative;
+      margin-top: 66px;
+      padding: 26px 0 6px;
+      text-align: left;
+    }
+
+    .system-labels {
+      display: grid;
+      grid-template-columns: 1.05fr 0.42fr 1fr 1fr 1.05fr;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 0 10px;
+      color: #f4f4f4;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .system-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 0.42fr 1fr 1fr 1.05fr;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .panel {
+      position: relative;
+      min-height: 156px;
+      padding: 20px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    }
+
+    .panel.small {
+      min-height: 96px;
+      align-self: start;
+    }
+
+    .panel-title {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 14px;
+      color: #f5f5f5;
+    }
+
+    .panel-body {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .prompt-surface {
+      display: grid;
+      place-items: center;
+      min-height: 116px;
+      margin-top: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    .prompt-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 34px;
+      padding: 0 15px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: #090909;
+      color: #eaeaea;
+      font-size: 13px;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    }
+
+    .stream-line {
+      position: absolute;
+      left: 22%;
+      right: 21%;
+      height: 2px;
+      border-radius: 999px;
+    }
+
+    .stream-line.red {
+      top: 98px;
+      background: linear-gradient(90deg, rgba(239, 68, 68, 0.95), rgba(239, 68, 68, 0.1));
+    }
+
+    .stream-line.blue {
+      top: 121px;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.95), rgba(59, 130, 246, 0.1));
+    }
+
+    .stream-line.amber {
+      top: 146px;
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.95), rgba(245, 158, 11, 0.2));
+    }
+
+    .flow-labels {
+      display: flex;
+      gap: 42px;
+      margin-top: 18px;
+      margin-left: 22%;
+      color: #b3b3b3;
+      font-size: 12px;
+    }
+
+    .capacity {
+      margin-top: 14px;
+      margin-left: 22%;
+      color: #9f9f9f;
+      font-size: 12px;
+    }
+
+    .capacity-bar {
+      height: 2px;
+      margin-top: 8px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12));
+    }
+
+    .bottom-row .cell {
+      min-height: 212px;
+      padding-top: 36px;
+    }
+
+    .bottom-row h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    .status-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: #d9d9d9;
+      font-size: 13px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+    }
+
+    @media (max-width: 1100px) {
+      .nav-shell {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .grid-frame {
+        width: min(1010px, calc(100vw - 48px));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-shell {
+        width: min(1180px, calc(100vw - 28px));
+      }
+
+      .announcement {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero {
+        width: min(900px, calc(100vw - 30px));
+        margin-top: 72px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .grid-frame {
+        width: calc(100vw - 30px);
+        margin-top: 68px;
+      }
+
+      .top-row,
+      .bottom-row,
+      .system-labels,
+      .system-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .top-row .cell,
+      .bottom-row .cell {
+        min-height: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .bottom-row .cell:last-child,
+      .top-row .cell:last-child {
+        border-bottom: none;
+      }
+
+      .middle-row {
+        padding: 68px 24px 44px;
+      }
+
+      .system-map {
+        padding-top: 0;
+      }
+
+      .stream-line,
+      .flow-labels,
+      .capacity {
+        position: static;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+      }
+
+      .stream-line {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .flow-labels {
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button,
+      .nav-link {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="nav-shell">
+      <a class="brand" href="#hero" aria-label="UI UX Pro Max home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>UI UX Pro Max</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link active" href="#grid">Products <span class="chevron">▼</span></a>
+        <a class="nav-link" href="#grid">Resources <span class="chevron">▼</span></a>
+        <a class="nav-link" href="#grid">Solutions <span class="chevron">▼</span></a>
+        <a class="nav-link" href="#grid">Enterprise</a>
+        <a class="nav-link" href="#grid">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="button subtle" href="#grid">Ask AI</a>
+        <a class="button subtle" href="#grid">Log In</a>
+        <a class="button primary" href="#grid">Sign Up</a>
+      </div>
+    </header>
+  </div>
+
+  <div class="announcement">
+    <span class="announcement-copy">UI UX Pro Max v2.5 Vercel-inspired landing refresh</span>
+    <a class="button" href="#grid">Read the preview →</a>
+  </div>
+
+  <main>
+    <section class="hero" id="hero">
+      <h1>Build intelligent interfaces with UI UX Pro Max.</h1>
+      <div class="hero-actions">
+        <a class="button primary" href="#grid">Get Started</a>
+        <a class="button subtle" href="#grid">Talk to an Expert</a>
+      </div>
+    </section>
+
+    <section class="grid-frame" id="grid" aria-label="Feature overview">
+      <div class="top-row">
+        <article class="cell">
+          <div class="eyebrow">Problem</div>
+          <h2>What messy product work would you love to never design twice?</h2>
+        </article>
+        <article class="cell">
+          <div class="eyebrow">Search</div>
+          <p>
+            Pull structured guidance for landing patterns, color direction, typography,
+            and stack-specific UX rules without digging through scattered references.
+          </p>
+        </article>
+        <article class="cell">
+          <div class="eyebrow">Reason</div>
+          <p>
+            The design system engine adapts each recommendation to your product type,
+            intent, and platform so the output stays deliberate instead of generic.
+          </p>
+        </article>
+      </div>
+
+      <div class="middle-row">
+        <div class="eyebrow">Deep Section</div>
+        <h2>Bringing design systems to life with the UI UX Pro Max reasoning cloud.</h2>
+        <p class="lede">
+          Every interface starts with a prompt, follows a search-and-reason loop, and
+          adapts the output until the design system, implementation guidance, and proof
+          surface all line up.
+        </p>
+
+        <div class="system-map">
+          <div class="system-labels">
+            <span>Frontend</span>
+            <span>API</span>
+            <span>Reason</span>
+            <span>Plan &amp; Act</span>
+            <span>Output &amp; QA</span>
+          </div>
+          <div class="system-grid">
+            <article class="panel">
+              <span class="panel-title">Prompt Surface</span>
+              <div class="prompt-surface">
+                <span class="prompt-pill mono">Prompt ▏</span>
+              </div>
+            </article>
+            <article class="panel small">
+              <span class="panel-title">Bot ID</span>
+              <div class="panel-body">API</div>
+            </article>
+            <article class="panel">
+              <span class="panel-title">Reason</span>
+              <div class="panel-body">AI SDK<br>AI Gateway<br>Search ranking</div>
+            </article>
+            <article class="panel">
+              <span class="panel-title">Plan &amp; Act</span>
+              <div class="panel-body">Workflow rules<br>Stack guidance<br>Preview iteration</div>
+            </article>
+            <article class="panel">
+              <span class="panel-title">Output &amp; QA</span>
+              <div class="panel-body">Landing preview<br>README surface<br>Visual checks</div>
+            </article>
+
+            <div class="stream-line red" aria-hidden="true"></div>
+            <div class="stream-line blue" aria-hidden="true"></div>
+            <div class="stream-line amber" aria-hidden="true"></div>
+          </div>
+          <div class="flow-labels">
+            <span>Streamed</span>
+            <span>Streamed</span>
+            <span>Direct Access</span>
+          </div>
+          <div class="capacity">
+            Fluid compute with controlled visual polish
+            <div class="capacity-bar" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-row">
+        <article class="cell">
+          <div class="eyebrow">Step 1</div>
+          <h3>From Prompt</h3>
+          <p>Capture the product type, stack, and exact aesthetic target before output starts to drift.</p>
+        </article>
+        <article class="cell">
+          <div class="eyebrow">Step 2</div>
+          <h3>Prompt</h3>
+          <p>Generate a design system first so color, typography, CTA treatment, and layout stay coherent.</p>
+        </article>
+        <article class="cell">
+          <div class="eyebrow">Step 3</div>
+          <h3>Reason with context</h3>
+          <p>Keep monochrome chrome, isolate spectrum moments, and verify each screenshot against the intended reference.</p>
+          <div class="status-note">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Verification-ready visual system</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
