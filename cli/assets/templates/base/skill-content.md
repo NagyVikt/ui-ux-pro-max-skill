@@ -38,6 +38,7 @@ Use this skill when the user requests any of the following:
 | **New project / page** | "做一个 landing page"、"Build a dashboard" | Step 1 → Step 2 (design system) |
 | **New component** | "Create a pricing card"、"Add a modal" | Step 3 (domain search: style, ux) |
 | **Choose style / color / font** | "What style fits a fintech app?"、"推荐配色" | Step 2 (design system) |
+| **Match a specific aesthetic** | "Make it feel like Vercel"、"Need a Vercel-like developer cloud landing" | Step 2 → Step 3 |
 | **Review existing UI** | "Review this page for UX issues"、"检查无障碍" | Quick Reference checklist above |
 | **Fix a UI bug** | "Button hover is broken"、"Layout shifts on load" | Quick Reference → relevant section |
 | **Improve / optimize** | "Make this faster"、"Improve mobile experience" | Step 3 (domain search: ux, react) |
@@ -72,6 +73,11 @@ This command:
 **Example:**
 ```bash
 python3 skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
+```
+
+**Vercel-inspired example:**
+```bash
+python3 skills/ui-ux-pro-max/scripts/search.py "vercel-inspired developer cloud ai platform monochrome grid" --design-system -p "Launch Platform"
 ```
 
 ### Step 2b: Persist Design System (Master + Overrides Pattern)
@@ -121,12 +127,12 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n
 | Need | Domain | Example |
 |------|--------|---------|
 | Product type patterns | `product` | `--domain product "entertainment social"` |
-| More style options | `style` | `--domain style "glassmorphism dark"` |
+| More style options | `style` | `--domain style "glassmorphism dark"` or `--domain style "vercel-inspired developer cloud"` |
 | Color palettes | `color` | `--domain color "entertainment vibrant"` |
 | Font pairings | `typography` | `--domain typography "playful modern"` |
 | Chart recommendations | `chart` | `--domain chart "real-time dashboard"` |
 | UX best practices | `ux` | `--domain ux "animation accessibility"` |
-| Landing structure | `landing` | `--domain landing "hero social-proof"` |
+| Landing structure | `landing` | `--domain landing "hero social-proof"` or `--domain landing "vercel grid hero proof"` |
 | React Native perf | `react` | `--domain react "rerender memo list"` |
 | App interface a11y | `web` | `--domain web "accessibilityLabel touch safe-areas"` |
 | AI prompt / CSS keywords | `prompt` | `--domain prompt "minimalism"` |
